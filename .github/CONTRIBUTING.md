@@ -39,7 +39,7 @@ Before submitting a pull request:
 
 ## Requirements
 
--   **[PSR-12 Coding Standard](https://www.php-fig.org/psr/psr-12/)** Kindly check by running `composer workflow` as described in [the readme](https://github.com/usernotnull/tall-toasts#contributing)
+-   **[PSR-12 Coding Standard](https://www.php-fig.org/psr/psr-12/)** Kindly check by running `composer workflow` as described in [the readme](https://github.com/Crumbls/tall-toasts#contributing)
 -   **Add tests!** Your patch won't be accepted if it doesn't have tests.
 -   **Document any change in behaviour** Make sure the `README.md` and any other relevant documentation are kept up-to-date.
 -   **Consider our release cycle** We try to follow [SemVer v2.0.0](https://semver.org/). Randomly breaking public APIs is not an option.

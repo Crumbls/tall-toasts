@@ -10,11 +10,11 @@ Runs with the TALL stack: [Laravel](https://laravel.com/docs/10.x/installation),
 [Livewire](https://laravel-livewire.com/docs/2.x/installation),
 [AlpineJS](https://alpinejs.dev/essentials/installation).
 
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/usernotnull/tall-toasts?label=release&sort=semver&style=plastic)](https://github.com/usernotnull/tall-toasts/releases)
-[![Build size Brotli](https://img.badgesize.io/usernotnull/tall-toasts/main/dist/js/tall-toasts.js.svg?compression=brotli&style=plastic&color=green&label=JS%20size)](https://github.com/usernotnull/tall-toasts/blob/main/dist/js/tall-toasts.js)  
-[![Scrutinizer Score](https://img.shields.io/scrutinizer/g/usernotnull/tall-toasts.svg?style=plastic&label=scrutinizer%20score)](https://scrutinizer-ci.com/g/usernotnull/tall-toasts)
-[![Codacy branch grade](https://img.shields.io/codacy/grade/0c6b4f96ac2a4a6cbf265f5e825a3fd2/main?style=plastic)](https://www.codacy.com/gh/usernotnull/tall-toasts/dashboard?utm_source=github.com&utm_medium=referral&utm_content=usernotnull/tall-toasts&utm_campaign=Badge_Grade)  
-[![Codecov branch](https://img.shields.io/codecov/c/github/usernotnull/tall-toasts/main?style=plastic)](https://app.codecov.io/gh/usernotnull/tall-toasts)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Crumbls/tall-toasts?label=release&sort=semver&style=plastic)](https://github.com/Crumbls/tall-toasts/releases)
+[![Build size Brotli](https://img.badgesize.io/Crumbls/tall-toasts/main/dist/js/tall-toasts.js.svg?compression=brotli&style=plastic&color=green&label=JS%20size)](https://github.com/Crumbls/tall-toasts/blob/main/dist/js/tall-toasts.js)  
+[![Scrutinizer Score](https://img.shields.io/scrutinizer/g/Crumbls/tall-toasts.svg?style=plastic&label=scrutinizer%20score)](https://scrutinizer-ci.com/g/Crumbls/tall-toasts)
+[![Codacy branch grade](https://img.shields.io/codacy/grade/0c6b4f96ac2a4a6cbf265f5e825a3fd2/main?style=plastic)](https://www.codacy.com/gh/Crumbls/tall-toasts/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Crumbls/tall-toasts&utm_campaign=Badge_Grade)  
+[![Codecov branch](https://img.shields.io/codecov/c/github/Crumbls/tall-toasts/main?style=plastic)](https://app.codecov.io/gh/Crumbls/tall-toasts)
 
 Light | Dark
 ------------ | -------------
@@ -35,7 +35,7 @@ available:
 
 Since the frontend is a pure AlpineJS component with no reliance on external JS libs, and since the backend handles most
 of the logic, the javascript footprint is
-tiny [(less than ONE kilobyte!)](https://img.badgesize.io/usernotnull/tall-toasts/main/dist/js/tall-toasts.js.svg?compression=brotli&style=plastic&color=green&label=JS%20size)
+tiny [(less than ONE kilobyte!)](https://img.badgesize.io/Crumbls/tall-toasts/main/dist/js/tall-toasts.js.svg?compression=brotli&style=plastic&color=green&label=JS%20size)
 .
 
 The CSS footprint is also negligible as it uses the default TailwindCSS classes. Even if you override the default views,
@@ -170,7 +170,7 @@ AlpineJS | ^3.0
 You can install the package via [Composer](https://getcomposer.org/):
 
 ```bash
-composer require usernotnull/tall-toasts
+composer require crumbls/tall-toasts
 ```
 
 ## Setup
@@ -191,8 +191,8 @@ your `tailwind.config.js` file:
 ```js
 // use `purge` instead of `content` if using TailwindCSS v2.x
 content: [
-    './vendor/usernotnull/tall-toasts/config/**/*.php',
-    './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php',
+    './vendor/crumbls/tall-toasts/config/**/*.php',
+    './vendor/crumbls/tall-toasts/resources/views/**/*.blade.php',
     // etc...
 ]
 ```
@@ -211,7 +211,7 @@ If you have installed AlpineJS through NPM, you can add the Toast component by c
 
 ```js
 import Alpine from "alpinejs"
-import ToastComponent from '../../vendor/usernotnull/tall-toasts/resources/js/tall-toasts'
+import ToastComponent from '../../vendor/crumbls/tall-toasts/resources/js/tall-toasts'
 
 Alpine.data('ToastComponent', ToastComponent)
 
@@ -343,7 +343,7 @@ input is provided!
 Make sure you thoroughly go through this readme first!
 
 If the checklist below does not resolve your problem, feel free
-to [submit an issue](https://github.com/usernotnull/tall-toasts/issues/new/choose). Make sure to follow the bug report
+to [submit an issue](https://github.com/Crumbls/tall-toasts/issues/new/choose). Make sure to follow the bug report
 template. It helps us quickly reproduce the bug and resolve it.
 
 ### The toasts show multiple times only after refresh
@@ -434,7 +434,7 @@ This project follows the [Semantic Versioning](https://semver.org/) guidelines.
 
 As per security best practices, do not call `doNotSanitize()` on a toast that has user input in its message or title!
 
-Please review [the security policy](https://github.com/usernotnull/tall-toasts/security/policy) on how to report
+Please review [the security policy](https://github.com/Crumbls/tall-toasts/security/policy) on how to report
 security vulnerabilities.
 
 ## Credits
