@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\File;
 
 /**
- * @see \Usernotnull\Toast\Toast
+ * @see Toast
  */
 class ToastManager extends Facade
 {
@@ -44,7 +44,7 @@ class ToastManager extends Facade
     {
         $appUrl = config('toast.asset_url') ?: rtrim($options['asset_url'] ?? '', '/');
 
-        $manifestContent = File::get(__DIR__ . '/../dist/js/manifest.json');
+        $manifestContent = File::get(__DIR__.'/../dist/js/manifest.json');
 
         $manifest = json_decode($manifestContent, true, 512, JSON_THROW_ON_ERROR);
         $versionedFileName = $manifest['/tall-toasts.js'];

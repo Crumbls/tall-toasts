@@ -31,15 +31,64 @@ it('receives notifications on livewire component', function () {
         ->push();
 
     toast()
-        ->info($message . ' next', $title)
+        ->info($message.' next', $title)
         ->pushOnNextPage();
 
     $component = Livewire::test(ToastComponent::class);
 
     assertEquals($component->get('toasts'), [
-        Notification::make($message . ' next', $title),
+        Notification::make($message.' next', $title),
         Notification::make($message, $title),
     ]);
+});
+
+it('preserves next-page toasts before current toasts while keeping insertion order', function () {
+    toast()
+        ->info('next-page first', 'First next page')
+        ->pushOnNextPage();
+
+    toast()
+        ->warning('next-page second', 'Second next page')
+        ->pushOnNextPage();
+
+    toast()
+        ->success('current first', 'First current')
+        ->push();
+
+    toast()
+        ->danger('current second', 'Second current')
+        ->push();
+
+    $component = Livewire::test(ToastComponent::class);
+
+    assertEquals($component->get('toasts'), [
+        Notification::make('next-page first', 'First next page'),
+        Notification::make('next-page second', 'Second next page', NotificationType::$warning),
+        Notification::make('current first', 'First current', NotificationType::$success),
+        Notification::make('current second', 'Second current', NotificationType::$danger),
+    ]);
+});
+
+it('keeps sticky unsanitized toasts intact when rendered through the livewire component', function () {
+    $message = "<span class='font-semibold italic'>Vendor</span> added to portfolio";
+    $title = '<strong>Portfolio update</strong>';
+
+    toast()
+        ->success($message, $title)
+        ->doNotSanitize()
+        ->sticky()
+        ->push();
+
+    $component = Livewire::test(ToastComponent::class);
+
+    assertEquals([
+        [
+            'message' => $message,
+            'title' => $title,
+            'type' => NotificationType::$success,
+            'duration' => 0,
+        ],
+    ], $component->get('toasts'));
 });
 
 it('renders and pulls data in a blade view', function () {

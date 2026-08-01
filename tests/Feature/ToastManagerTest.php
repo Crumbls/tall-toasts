@@ -64,7 +64,7 @@ it('displays toast script tag with blade directive', function () {
 });
 
 it('routes to the javascript', function () {
-    $jsDate = File::lastModified(__DIR__ . '/../../dist/js/tall-toasts.js');
+    $jsDate = File::lastModified(__DIR__.'/../../dist/js/tall-toasts.js');
     $serverDate = sprintf('%s GMT', gmdate('D, d M Y H:i:s', $jsDate ?: null));
 
     get('/toast/tall-toasts.js', [
@@ -73,5 +73,5 @@ it('routes to the javascript', function () {
 
     get('/toast/tall-toasts.js.map')->assertOk();
 
-    expect(File::get(__DIR__ . '/../../dist/js/tall-toasts.js'))->toContain('this.toasts', 'wireToasts');
+    expect(File::get(__DIR__.'/../../dist/js/tall-toasts.js'))->toContain('this.toasts', 'wireToasts');
 });

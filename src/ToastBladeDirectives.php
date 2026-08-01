@@ -6,6 +6,6 @@ class ToastBladeDirectives
 {
     public static function toastScripts(string $expression): string
     {
-        return '{!! \Usernotnull\Toast\ToastManager::scripts(' . $expression . ') !!}';
+        return '{!! \Usernotnull\Toast\ToastManager::scripts('.$expression.') !!}';
     }
 }

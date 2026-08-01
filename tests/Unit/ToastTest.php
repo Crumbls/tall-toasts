@@ -99,3 +99,15 @@ it('can set the duration', function () {
     expect($toast['duration'])
         ->toEqual(1234);
 });
+
+it('can make a toast sticky', function () {
+    toast()
+        ->info('testing sticky', 'title')
+        ->sticky()
+        ->push();
+
+    $toast = ToastManager::pull()[0];
+
+    expect($toast['duration'])
+        ->toEqual(0);
+});
