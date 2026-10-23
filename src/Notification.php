@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Usernotnull\Toast;
 
+/** @api */
 class Notification
 {
     protected bool $sanitize;

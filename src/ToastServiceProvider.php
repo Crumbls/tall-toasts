@@ -12,9 +12,11 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Usernotnull\Toast\Controllers\JavaScriptAssets;
 use Usernotnull\Toast\Livewire\ToastComponent;
 
+/** @api */
 class ToastServiceProvider extends PackageServiceProvider
 {
     /* More info: https://github.com/spatie/laravel-package-tools */
+    #[\Override]
     public function configurePackage(Package $package): void
     {
         $package->name('tall-toasts')
@@ -22,6 +24,7 @@ class ToastServiceProvider extends PackageServiceProvider
             ->hasViews();
     }
 
+    #[\Override]
     public function packageBooted(): void
     {
         RouteFacade::get('/toast/tall-toasts.js', [JavaScriptAssets::class, 'source']);
@@ -32,6 +35,7 @@ class ToastServiceProvider extends PackageServiceProvider
         Livewire::component('toasts', ToastComponent::class);
     }
 
+    #[\Override]
     public function registeringPackage(): void
     {
         $this->app->singleton(Toast::class);

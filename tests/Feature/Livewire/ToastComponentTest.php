@@ -31,13 +31,13 @@ it('receives notifications on livewire component', function () {
         ->push();
 
     toast()
-        ->info($message.' next', $title)
+        ->info($message . ' next', $title)
         ->pushOnNextPage();
 
     $component = Livewire::test(ToastComponent::class);
 
     assertEquals($component->get('toasts'), [
-        Notification::make($message.' next', $title),
+        Notification::make($message . ' next', $title),
         Notification::make($message, $title),
     ]);
 });

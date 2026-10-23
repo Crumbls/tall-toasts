@@ -5,9 +5,9 @@
 A Toast global that can be called from the backend (via Controllers, Blade Views, Components) or frontend (JS, Alpine
 Components) to render customizable toasts.
 
-Runs with the TALL stack: [Laravel](https://laravel.com/docs/10.x/installation),
+Runs with the TALL stack: [Laravel](https://laravel.com/docs/13.x/installation),
 [TailwindCSS](https://tailwindcss.com/docs/guides/laravel),
-[Livewire](https://laravel-livewire.com/docs/2.x/installation),
+[Livewire](https://livewire.laravel.com/docs/installation),
 [AlpineJS](https://alpinejs.dev/essentials/installation).
 
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Crumbls/tall-toasts?label=release&sort=semver&style=plastic)](https://github.com/Crumbls/tall-toasts/releases)
@@ -58,6 +58,15 @@ TailwindCSS classes.
 No more messing with custom CSS overrides!
 
 ## Usage
+
+### Compatibility
+
+Supports Laravel 10–13 with Livewire 3 or 4. Laravel 13 requires PHP 8.3 or newer.
+The PHP requirement for older Laravel versions follows the framework and Livewire versions installed.
+
+This fork includes the Laravel 13 dependency updates proposed in upstream
+[PR #678](https://github.com/usernotnull/tall-toasts/pull/678) and
+[PR #684](https://github.com/usernotnull/tall-toasts/pull/684), while retaining its existing Livewire 4 support.
 
 ### From The Frontend
 
@@ -139,10 +148,10 @@ To stay updated, [follow me on Twitter](https://twitter.com/usernotnull).
 
 Dependency | Version
 ----|----
-PHP | ^8.0
-Laravel | ^8.0 \| ^9.0 \| ^10.0 \| ^11.0 \| ^12.0
+PHP | ^8.1 (8.3 or newer for Laravel 13)
+Laravel | ^10.0 \| ^11.0 \| ^12.0 \| ^13.0
 TailwindCSS | ^2.0 \| ^3.0
-Livewire | ^2.0 \| ^3.0 (as of tall-toasts v2)
+Livewire | ^3.0 \| ^4.0
 AlpineJS | ^3.0
 
 You can find the older [v1 documentation here](README-v1.md)
@@ -352,6 +361,7 @@ To stay updated, [follow me on Twitter](https://twitter.com/usernotnull).
 ## Testing
 
 This package uses [PestPHP](https://pestphp.com/) to run its tests.
+Development tools require PHP 8.3 or newer. Install dependencies with `composer install` before running the checks.
 
 - To run tests without coverage, run:
 
@@ -367,20 +377,20 @@ composer test-coverage
 
 ## Contributing
 
-This package has 3 GitHub Workflows which run sequentially when pushing PRs:
+Styling checks, static analysis, and tests run on every pull request and push to `main`:
 
-- First, it checks for styling issues and automatically fixes them using:
+- It checks styling without modifying files using:
     1. [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
-    2. [PHP Code Beautifier](https://github.com/squizlabs/PHP_CodeSniffer)
+    2. [PHP Code Sniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer)
 
-- Then, it uses static analysis followed by standard unit tests using:
+- It runs static analysis and tests using:
     1. [Psalm](https://psalm.dev/)
     2. [PHP Stan](https://github.com/phpstan/phpstan)
     3. [PHP MessDetector](https://phpmd.org/)
-    4. [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+    4. [PHP Code Sniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer)
     5. [PestPHP](https://pestphp.com/)
 
-- Finally, it generates the minified JS dist which is injected by @toastScripts
+- After successful checks on `main`, it generates the minified JS dist which is injected by @toastScripts.
 
 When pushing PRs, it's a good idea to do a quick run and make sure the workflow checks out, which saves time during code
 review before merging.

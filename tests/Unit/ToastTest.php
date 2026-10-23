@@ -4,7 +4,18 @@ declare(strict_types=1);
 
 use Usernotnull\Toast\Notification;
 use Usernotnull\Toast\NotificationType;
+use Usernotnull\Toast\Toast;
 use Usernotnull\Toast\ToastManager;
+
+it('preserves the toast helper and container service when the helper file is loaded again', function () {
+    $toast = toast();
+
+    require __DIR__ . '/../../src/helpers.php';
+
+    expect(toast())
+        ->toBe($toast)
+        ->toBe(app(Toast::class));
+});
 
 it('pushes and pulls toasts via session', function () {
     expect(ToastManager::hasPendingToasts())->toBeFalse();

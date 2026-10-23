@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Usernotnull\Toast\ToastManager;
 
+/** @api */
 class ToastComponent extends Component
 {
     public int $defaultDuration;

@@ -6,6 +6,7 @@ namespace Usernotnull\Toast;
 
 use function is_string;
 
+/** @api */
 class Toast
 {
     public function danger(string $message, ?string $title = null): Notification

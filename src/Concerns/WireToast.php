@@ -11,7 +11,7 @@ trait WireToast
     public function renderedWireToast(): void
     {
         if (! ToastManager::componentRendered()) {
-            foreach (ToastManager::pull() ?? [] as $notification) {
+            foreach (ToastManager::pull() as $notification) {
                 $this->dispatch(
                     'toast',
                     message: $notification['message'],

@@ -6,31 +6,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   styling:
-    name: fix-styling
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [ubuntu-latest]
-        php: [8.1, '8.2']
-        laravel: ['10.*', '11.*', '12.*']
-        dependency-version: [prefer-stable]
-        include:
-          - laravel: 10.*
-            testbench: ^8.0
-          - laravel: 11.*
-            testbench: ^9.0
-          - laravel: 12.*
-            testbench: ^10.0
-        exclude:
-          - laravel: 11.*
-            php: 8.1
-          - laravel: 12.*
-            php: 8.1
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
@@ -39,20 +20,15 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.4'
           tools: composer:v2
-          coverage: false
+          coverage: none
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction
 
-      - name: PHP-Code Sniffer Beautifier
-        run: ./vendor/bin/phpcbf
+      - name: PHP-Code Sniffer
+        run: vendor/bin/phpcs
 
       - name: PHP-CS-Fixer
-        run: ./vendor/bin/php-cs-fixer fix
-
-      - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: styling fixes
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff
